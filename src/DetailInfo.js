@@ -5,7 +5,8 @@ export function DetailInfo(props) {
         <div style={{ textAlign: "left" }}>
             Address : {props.address}<br />
             Phone : {props.phone}<br />
-            Age : {props.age}
+            Age : {props.age}<br /><br />
+            <span style={{ fontStyle: "italic" }}>If there is any props with invalid value, a error/warning will be shown in the Javascript console</span>
         </div>
     );
 }
