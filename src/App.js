@@ -12,7 +12,7 @@ function App() {
         </tr>
         <tr>
           <td>
-            You can read more detail about JSX <a href="https://reactjs.org/docs/introducing-jsx.html">here</a>
+            You can read more detail about JSX <a href="https://reactjs.org/docs/introducing-jsx.html" target="_blank">here</a>
           </td>
         </tr>
       </table>
