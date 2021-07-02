@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import OnOff from "./OnOff";
+
 function Experience(props) {
     const [name, setName] = useState("Arif");
     const [address, setAddress] = useState("3453535");
@@ -7,7 +9,7 @@ function Experience(props) {
     const [onoff, setOnOff] = useState(false);
 
     useEffect(() => {
-        console.log('Experience component render')
+        // console.log('Experience component render')
     });
 
     return (
@@ -17,7 +19,8 @@ function Experience(props) {
             Name : {name}<br />
             Phone : {phone}<br />
             <input type="checkbox" checked={onoff} onClick={() => setOnOff(!onoff)}></input>On/Off<br />
-            {onoff ? "True" : "False"}
+            {/* {onoff ? "True" : "False"} */}
+            <OnOff on={onoff}></OnOff>
         </div>
     )
 }

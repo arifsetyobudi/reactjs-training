@@ -4,9 +4,9 @@ function Grocery(props) {
     const [item, setItem] = useState("");
     const [groceries, setGroceries] = useState([]);
 
-    useEffect(() => {
-        //setGroceries(["Milk", "Coffe"]);
-    });
+    // useEffect(() => {
+    //     setGroceries(state => ({ ...state, groceries: ["Milk", "Coffe"] }));
+    // }, [groceries]);
 
     const AddGrocery = () => {
         setGroceries([...groceries, item]);

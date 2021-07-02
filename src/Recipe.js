@@ -29,6 +29,7 @@ export default class Recipe extends React.Component {
     }
 
     render() {
+        //console.log("Recipe render", new Date());
         return <div>
             Ingredient : <input type="text" value={this.state.ingredient} onChange={this.updateIngredient}></input>
             <button onClick={() => this.addIngredient(this.state.ingredient)}>Add</button> <br /><br />

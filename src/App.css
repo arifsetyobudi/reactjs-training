@@ -37,7 +37,10 @@
   }
 }
 
+.testClass {
+  color: #0000ff;
+}
 
-.testClass{
-  color: #0000FF;
+.container {
+  border: 1px solid #0000ff !important ;
 }

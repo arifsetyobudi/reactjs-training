@@ -6,26 +6,26 @@ export default class Biodata extends React.Component {
         this.state = {
             name: "Arif Again",
             phone: "2352342342",
-            address: "asdadad"
+            address: "asdadad",
+            sport: "",
+            sports: ["Please select", "Soccer", "Badminton", "Tennis", "Pingpong"]
         }
     }
 
     componentDidMount() {
-        console.log('componentDidMount');
+        // console.log('componentDidMount');
     }
 
     componentDidUpdate() {
-        console.log('componentDidUpdate');
+        // console.log('componentDidUpdate');
     }
 
     componentWillUnmount() {
-        console.log("componentWillUnmount");
+        // console.log("componentWillUnmount");
     }
 
     updateState = (e) => {
         const { name, value } = e.target;
-        console.log('name', name, 'value', value);
-
         this.setState({ [name]: value })
 
         // const employee = {
@@ -43,16 +43,26 @@ export default class Biodata extends React.Component {
         this.setState({ name: name })
     }
 
+    updateSport = (event) => {
+        this.setState({ sport: event.target.value })
+    }
+
     render() {
-        console.log('Biodata component render');
-        const { name, phone } = this.state;
+        // console.log('Biodata component render');
+        const { name, phone, sport, sports } = this.state;
 
         return <div>
             <input type="text" name="name" value={name} onChange={this.updateState}></input><br />
             <input type="text" name="phone" value={phone} onChange={this.updateState}></input><br />
+            <select name="sport" value={sport} onChange={this.updateState}>
+                {sports.map((it, key) => {
+                    return (<option key={key} value={it}>{it}</option>)
+                })}
+            </select><br />
             Name : {name}<br />
             Phone : {phone}<br />
-            Hobby : {this.props.hobby}
+            Hobby : {this.props.hobby}<br />
+            Sport : {sport != "Please select" && sport}
         </div>
     }
 }
