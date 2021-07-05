@@ -1,25 +1,47 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { Button } from "reactstrap";
 import axios from "axios";
 
-function ItemCreate2(props) {
+function ItemDetail2(props) {
     const [itemName, setItemName] = useState("");
     const [price, setPrice] = useState(0);
     const [unitOfMeasure, setUnitOfMeasure] = useState("");
 
     const history = useHistory();
 
-    const createItem = () => {
-        axios.post(`http://localhost:7770/api/items`, {
+    let { id } = useParams();
+
+    useEffect(() => {
+        getItem(id)
+    }, []);
+
+    const getItem = (id) => {
+        axios.get(`http://localhost:7770/api/items/${id}`)
+            .then(res => {
+                const item = res.data;
+                setItemName(item.itemName);
+                setPrice(item.price);
+                setUnitOfMeasure(item.unitOfMeasure);
+            }).catch(function (error) {
+                if (error.response.status == 404) {
+                    history.push({
+                        pathname: "/items2"
+                    });
+                }
+            })
+    }
+
+    const updateItem = () => {
+        axios.put(`http://localhost:7770/api/items/${id}`, {
             itemName,
             price,
             unitOfMeasure
         })
             .then(res => {
                 history.push({
-                    pathname: "/items2"                    
+                    pathname: "/items2"
                 });
             });
     }
@@ -53,11 +75,11 @@ function ItemCreate2(props) {
             </tr>
             <tr>
                 <td colSpan="2">
-                    <Button onClick={createItem}>Submit</Button>
+                    <Button onClick={updateItem}>Submit</Button>
                 </td>
             </tr>
         </table>
     </div>
 }
 
-export default ItemCreate2;
+export default ItemDetail2;

@@ -8,7 +8,7 @@ function ItemList2(props) {
 
     useEffect(() => {
         getAllItems()
-    });
+    }, []);
 
     const getAllItems = () => {
         axios.get(`http://localhost:7770/api/items`)
@@ -39,7 +39,7 @@ function ItemList2(props) {
                 {items.map((item) => {
                     return (
                         <tr key={item.id}>
-                            <td><Link to={`/items/${item.id}`}>{item.itemName}</Link></td>
+                            <td><Link to={`/items2/${item.id}`}>{item.itemName}</Link></td>
                             <td>{item.price}</td>
                             <td>{item.unitOfMeasure}</td>
                             <td><span style={{ textDecoration: "underline", cursor: "pointer" }} onClick={() => deleteItem(item.id)}>Remove</span></td>

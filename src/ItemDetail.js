@@ -27,6 +27,10 @@ class ItemDetail extends React.Component {
             .then(res => {
                 const item = res.data;
                 this.setState({ item });
+            }).catch(function (error) {
+                if (error.response.status == 404) {
+                    this.props.history.push(`/items`);
+                }
             })
     }
 

@@ -7,7 +7,9 @@ import About from './About';
 import ContactUs from './ContactUs';
 import Home from './Home';
 import ItemCreate from './ItemCreate';
+import ItemCreate2 from './ItemCreate2';
 import ItemDetail from './ItemDetail';
+import ItemDetail2 from './ItemDetail2';
 import ItemList from './ItemList';
 import ItemList2 from './ItemList2';
 import React from 'react';
@@ -69,6 +71,12 @@ function App() {
               <Route exact path="/items2">
                 <ItemList2 />
               </Route>
+              <Route path="/items2/create">
+                <ItemCreate2 />
+              </Route>
+              <Route exact path="/items2/:id">
+                <ItemDetail2 />
+              </Route>              
             </Switch>
           </Col>
         </Row>
