@@ -6,6 +6,9 @@ import { Col, Container, Row } from 'reactstrap';
 import About from './About';
 import ContactUs from './ContactUs';
 import Home from './Home';
+import ItemCreate from './ItemCreate';
+import ItemDetail from './ItemDetail';
+import ItemList from './ItemList';
 import React from 'react';
 
 function App() {
@@ -25,6 +28,9 @@ function App() {
           </Col> */}
           <Col>
             <Link to="/contact" >Contact Us</Link></Col>
+          <Col>
+            <Link to="/items" >Item List</Link>
+          </Col>
         </Row>
         <Row>
           <Col>
@@ -46,6 +52,15 @@ function App() {
               </Route>
               <Route path="/contact">
                 <ContactUs />
+              </Route>
+              <Route exact path="/items">
+                <ItemList />
+              </Route>
+              <Route exact path="/items/:id">
+                <ItemDetail />
+              </Route>
+              <Route path="/items/create">
+                <ItemCreate />
               </Route>
             </Switch>
           </Col>
