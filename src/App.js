@@ -9,6 +9,7 @@ import Home from './Home';
 import ItemCreate from './ItemCreate';
 import ItemDetail from './ItemDetail';
 import ItemList from './ItemList';
+import ItemList2 from './ItemList2';
 import React from 'react';
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
             <Link to="/contact" >Contact Us</Link></Col>
           <Col>
             <Link to="/items" >Item List</Link>
+          </Col>
+          <Col>
+            <Link to="/items2" >Item List - Functional</Link>
           </Col>
         </Row>
         <Row>
@@ -56,11 +60,14 @@ function App() {
               <Route exact path="/items">
                 <ItemList />
               </Route>
-              <Route exact path="/items/:id">
-                <ItemDetail />
-              </Route>
               <Route path="/items/create">
                 <ItemCreate />
+              </Route>
+              <Route exact path="/items/:id">
+                <ItemDetail />
+              </Route>              
+              <Route exact path="/items2">
+                <ItemList2 />
               </Route>
             </Switch>
           </Col>
