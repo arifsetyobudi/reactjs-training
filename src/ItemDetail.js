@@ -1,7 +1,10 @@
 import { Button } from 'reactstrap';
 import React from 'react';
-import axios from 'axios';
+import instance from './api/AxiosInstance';
 import { withRouter } from "react-router-dom";
+
+export const axios = instance.apiInstance();
+
 
 class ItemDetail extends React.Component {
     constructor(props) {
@@ -23,7 +26,7 @@ class ItemDetail extends React.Component {
         var id = params.id;
 
 
-        axios.get(`http://localhost:7770/api/items/${id}`)
+        axios.get(`items/${id}`)
             .then(res => {
                 const item = res.data;
                 this.setState({ item });
@@ -48,7 +51,7 @@ class ItemDetail extends React.Component {
 
         var id = params.id;
         const item = this.state.item;
-        axios.put(`http://localhost:7770/api/items/${id}`, item)
+        axios.put(`items/${id}`, item)
             .then(res => {
                 this.props.history.push(`/items`);
             });

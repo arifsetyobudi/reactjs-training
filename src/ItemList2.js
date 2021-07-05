@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
-import axios from "axios";
+import instance from './api/AxiosInstance';
+
+export const axios = instance.apiInstance();
 
 function ItemList2(props) {
     const [items, setItems] = useState([]);
@@ -11,7 +13,7 @@ function ItemList2(props) {
     }, []);
 
     const getAllItems = () => {
-        axios.get(`http://localhost:7770/api/items`)
+        axios.get(`items`)
             .then(res => {
                 const items = res.data;
                 setItems(items);
@@ -19,7 +21,7 @@ function ItemList2(props) {
     }
 
     const deleteItem = (id) => {
-        axios.delete(`http://localhost:7770/api/items/${id}`)
+        axios.delete(`items/${id}`)
             .then(res => {
                 setItems(items.filter(it => it.id != id));
             })

@@ -2,7 +2,9 @@ import { Link, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { Button } from "reactstrap";
-import axios from "axios";
+import instance from './api/AxiosInstance';
+
+export const axios = instance.apiInstance();
 
 function ItemCreate2(props) {
     const [itemName, setItemName] = useState("");
@@ -12,14 +14,14 @@ function ItemCreate2(props) {
     const history = useHistory();
 
     const createItem = () => {
-        axios.post(`http://localhost:7770/api/items`, {
+        axios.post(`items`, {
             itemName,
             price,
             unitOfMeasure
         })
             .then(res => {
                 history.push({
-                    pathname: "/items2"                    
+                    pathname: "/items2"
                 });
             });
     }

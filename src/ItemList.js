@@ -1,13 +1,17 @@
-import { Link } from 'react-router-dom';
-import React from 'react';
-import axios from 'axios';
+import { Link, withRouter } from 'react-router-dom';
 
-export default class ItemList extends React.Component {
+import React from 'react';
+import instance from './api/AxiosInstance';
+
+export const axios = instance.apiInstance();
+
+class ItemList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: []
-        }
+            items: [],
+            error: null
+        };
     }
 
     componentDidMount() {
@@ -15,15 +19,19 @@ export default class ItemList extends React.Component {
     }
 
     initData = () => {
-        axios.get(`http://localhost:7770/api/items`)
+        axios.get(`items`)
             .then(res => {
                 const items = res.data;
                 this.setState({ items });
+            }).catch(function (error) {
+                console.log('error', error);
+                if (error.response.status == 401) {                    
+                }
             })
     }
 
     deleteItem = (id) => {
-        axios.delete(`http://localhost:7770/api/items/${id}`)
+        axios.delete(`items/${id}`)
             .then(res => {
                 const items = this.state.items;
                 this.setState({ items: [...items.filter(it => it.id != id)] });
@@ -58,3 +66,5 @@ export default class ItemList extends React.Component {
         </div>
     }
 }
+
+export default withRouter(ItemList)

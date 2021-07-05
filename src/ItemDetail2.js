@@ -2,7 +2,9 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { Button } from "reactstrap";
-import axios from "axios";
+import instance from './api/AxiosInstance';
+
+export const axios = instance.apiInstance();
 
 function ItemDetail2(props) {
     const [itemName, setItemName] = useState("");
@@ -18,7 +20,7 @@ function ItemDetail2(props) {
     }, []);
 
     const getItem = (id) => {
-        axios.get(`http://localhost:7770/api/items/${id}`)
+        axios.get(`items/${id}`)
             .then(res => {
                 const item = res.data;
                 setItemName(item.itemName);
@@ -34,7 +36,7 @@ function ItemDetail2(props) {
     }
 
     const updateItem = () => {
-        axios.put(`http://localhost:7770/api/items/${id}`, {
+        axios.put(`items/${id}`, {
             itemName,
             price,
             unitOfMeasure
